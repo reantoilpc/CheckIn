@@ -20,7 +20,13 @@ namespace CheckIn.Api.Controllers
     {
     }
 
-    public class GetQrCodeResponse
+    public class GetQrCodeResponse : ResponseBase<string>
     {
+    }
+
+    public class ResponseBase<T>
+    {
+        public string ResultCode { get; set; }
+        public string ResultMessage { get; set; }
     }
 }
