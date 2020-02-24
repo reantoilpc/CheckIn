@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIn.Adapter", "CheckIn.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChcekIn.Service", "ChcekIn.Service\ChcekIn.Service.csproj", "{5FF7FA03-1D6A-452E-9445-86C6FC8C73BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckIn.Common", "CheckIn.Common\CheckIn.Common.csproj", "{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{5FF7FA03-1D6A-452E-9445-86C6FC8C73BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FF7FA03-1D6A-452E-9445-86C6FC8C73BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FF7FA03-1D6A-452E-9445-86C6FC8C73BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CheckIn.Common;
 
 namespace CheckIn.Api.Controllers
 {
@@ -14,19 +15,5 @@ namespace CheckIn.Api.Controllers
 
             return new GetQrCodeResponse();
         }
-    }
-
-    public class GetQrCodeRequest
-    {
-    }
-
-    public class GetQrCodeResponse : ResponseBase<string>
-    {
-    }
-
-    public class ResponseBase<T>
-    {
-        public string ResultCode { get; set; }
-        public string ResultMessage { get; set; }
     }
 }
