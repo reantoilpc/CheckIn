@@ -9,5 +9,18 @@ namespace CheckIn.Api.Controllers
 {
     public class QrCodeController : ApiController
     {
+        public GetQrCodeResponse GetQrCode([FromBody] GetQrCodeRequest request)
+        {
+
+            return new GetQrCodeResponse();
+        }
+    }
+
+    public class GetQrCodeRequest
+    {
+    }
+
+    public class GetQrCodeResponse
+    {
     }
 }
