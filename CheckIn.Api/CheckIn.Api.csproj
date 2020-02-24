@@ -105,6 +105,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ChcekIn.Service\ChcekIn.Service.csproj">
+      <Project>{5FF7FA03-1D6A-452E-9445-86C6FC8C73BE}</Project>
+      <Name>ChcekIn.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CheckIn.Common\CheckIn.Common.csproj">
       <Project>{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}</Project>
       <Name>CheckIn.Common</Name>

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,8 +11,8 @@ namespace CheckIn.Api.Controllers
     {
         public GetQrCodeResponse GetQrCode([FromBody] GetQrCodeRequest request)
         {
-
-            return new GetQrCodeResponse();
+            var getQrCodeResponse = new QrCodeService().GetMemberQrCode(request.EventId);
+            return getQrCodeResponse;
         }
     }
 }
