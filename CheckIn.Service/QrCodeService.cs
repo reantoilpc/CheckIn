@@ -21,12 +21,13 @@ namespace CheckIn.Service
 
         public bool CheckIn(Profile profile, int eventId)
         {
-            return true;
+            return _eventDao.CheckIn(eventId, profile.AccountId);
+            
         }
 
-        public bool Cancel(Profile profile, int requestEventId)
+        public bool Cancel(Profile profile, int eventId)
         {
-            throw new NotImplementedException();
+            return _eventDao.Cancel(eventId, profile.AccountId);
         }
     }
 }
