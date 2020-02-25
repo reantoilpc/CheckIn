@@ -12,14 +12,20 @@ namespace CheckIn.Api.Controllers
 {
     public class AccountController : BaseApiController
     {
-        [HttpPost]
-        public GetAccessTokenResponse GetAccesstoken([FromBody] GetAccessTokenRequest request)
+        private readonly AuthenticationService _authenticationService;
+
+        public AccountController()
         {
             var profileDao = new ProfileDao();
             var sha256Adapter = new Sha256Adapter();
             var authService = new AuthService(profileDao);
-            var authenticationService = new AuthenticationService(profileDao, sha256Adapter, authService);
-            var accessToken = authenticationService.GetAccessToken(request.UserName, request.Password);
+            _authenticationService = new AuthenticationService(profileDao, sha256Adapter, authService);
+        }
+
+        [HttpPost]
+        public GetAccessTokenResponse GetAccesstoken([FromBody] GetAccessTokenRequest request)
+        {
+            var accessToken = _authenticationService.GetAccessToken(request.UserName, request.Password);
 
             return new GetAccessTokenResponse(accessToken);
         }

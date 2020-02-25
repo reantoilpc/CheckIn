@@ -23,5 +23,10 @@ namespace CheckIn.Service
         {
             return true;
         }
+
+        public bool Cancel(Profile profile, int requestEventId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
