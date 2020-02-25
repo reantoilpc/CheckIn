@@ -23,7 +23,7 @@ namespace CheckIn.Service
 
         public bool ValidateAccessToken(string accessToken)
         {
-            throw new NotImplementedException();
+            return _authService.Verfy(accessToken);
         }
 
         public string GetAccessToken(string userName, string password)
@@ -38,5 +38,6 @@ namespace CheckIn.Service
 
             return string.Empty;
         }
+
     }
 }
