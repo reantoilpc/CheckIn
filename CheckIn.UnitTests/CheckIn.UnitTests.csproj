@@ -69,13 +69,17 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="AuthenticationServiceUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CheckIn.Adapter\CheckIn.Adapter.csproj">
+      <Project>{4CA3C397-4B8F-4107-AA7B-3CCBD3AEA929}</Project>
+      <Name>CheckIn.Adapter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CheckIn.Service\CheckIn.Service.csproj">
       <Project>{895E3594-56C4-4F63-A027-9692978C25BF}</Project>
       <Name>CheckIn.Service</Name>

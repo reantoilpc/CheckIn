@@ -42,11 +42,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthenticationService.cs" />
+    <Compile Include="AuthService.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QrCodeService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CheckIn.Adapter\CheckIn.Adapter.csproj">
+      <Project>{4CA3C397-4B8F-4107-AA7B-3CCBD3AEA929}</Project>
+      <Name>CheckIn.Adapter</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CheckIn.Common\CheckIn.Common.csproj">
       <Project>{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}</Project>
       <Name>CheckIn.Common</Name>
