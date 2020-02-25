@@ -24,14 +24,16 @@ namespace CheckIn.Api.Controllers
         [ValidateAccessToken]
         public GetQrCodeResponse GetQrCode([FromBody] GetQrCodeRequest request)
         {
-            return _qrCodeService.GetEventQrCode(Profile, request.EventId);
+            var qrCode = _qrCodeService.GetEventQrCode(Profile, request.EventId);
+            return new GetQrCodeResponse(qrCode);
         }
 
         [HttpPost]
         [ValidateAccessToken]
         public EventCheckInResponse EventCheckIn([FromBody]EventCheckInRequest request)
         {
-             return _qrCodeService.CheckIn(Profile, request.EventId);
+             var result = _qrCodeService.CheckIn(Profile, request.EventId);
+            return new EventCheckInResponse(result);
         }
     }
 }

@@ -13,15 +13,15 @@ namespace CheckIn.Service
         {
             _eventDao = eventDao;
         }
-        public GetQrCodeResponse GetEventQrCode(Profile profile, int eventId)
+        public string GetEventQrCode(Profile profile, int eventId)
         {
             var qrCode = _eventDao.GetQrCode(eventId, profile.AccountId);
-            return new GetQrCodeResponse(qrCode);
+            return qrCode;
         }
 
-        public EventCheckInResponse CheckIn(Profile profile, int eventId)
+        public bool CheckIn(Profile profile, int eventId)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

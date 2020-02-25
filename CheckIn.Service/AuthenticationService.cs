@@ -22,12 +22,6 @@ namespace CheckIn.Service
             _authService = authService;
         }
 
-        public GetAccessTokenResponse Login(string userName, string password)
-        {
-            var token = GetAccessToken(userName, password);
-
-            return new GetAccessTokenResponse(token);
-        }
 
         public string GetAccessToken(string userName, string password)
         {
@@ -42,7 +36,7 @@ namespace CheckIn.Service
                 return accessToken;
             }
 
-            return string.Empty;
+            throw new OperationFailedException("帳號或密碼驗證失敗!!");
         }
     }
 }

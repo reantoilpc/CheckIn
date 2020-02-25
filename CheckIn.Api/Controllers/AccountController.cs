@@ -19,8 +19,9 @@ namespace CheckIn.Api.Controllers
             var sha256Adapter = new Sha256Adapter();
             var authService = new AuthService(profileDao);
             var authenticationService = new AuthenticationService(profileDao, sha256Adapter, authService);
+            var accessToken = authenticationService.GetAccessToken(request.UserName, request.Password);
 
-            return authenticationService.Login(request.UserName, request.Password);
+            return new GetAccessTokenResponse(accessToken);
         }
     }
 }

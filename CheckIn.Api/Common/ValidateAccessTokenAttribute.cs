@@ -3,6 +3,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using CheckIn.Adapter;
 using CheckIn.Api.Controllers;
+using CheckIn.Common;
 using CheckIn.Service;
 
 namespace CheckIn.Api.Common

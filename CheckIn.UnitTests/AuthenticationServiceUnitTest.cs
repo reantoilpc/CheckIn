@@ -1,4 +1,6 @@
-﻿using CheckIn.Adapter;
+﻿using System;
+using CheckIn.Adapter;
+using CheckIn.Common;
 using CheckIn.Service;
 using NSubstitute;
 using NUnit.Framework;
@@ -24,10 +26,11 @@ namespace CheckIn.UnitTests
         }
 
         [Test]
-        public void Is_Empty_When_Passward_InValid()
+        public void InValid_Should_Throw_Exception()
         {
             GivenHashPassword("Ray", "HashPassword");
-            AccessTokenShouldBe("");
+
+            ShouldThrow<OperationFailedException>();
         }
 
         [Test]
@@ -37,6 +40,12 @@ namespace CheckIn.UnitTests
             GivenComputeHash("HashPassword");
             GivenAccessToken("AccessToken");
             AccessTokenShouldBe("AccessToken");
+        }
+
+        private void ShouldThrow<TException>() where TException : Exception
+        {
+            TestDelegate action = () => _authenticationService.GetAccessToken("Ray", "Mypassword");
+            Assert.Throws<TException>(action);
         }
 
         private void GivenAccessToken(string accessToken)

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CheckIn.Api.Common
+namespace CheckIn.Common
 {
     public class OperationFailedException : Exception
     {
