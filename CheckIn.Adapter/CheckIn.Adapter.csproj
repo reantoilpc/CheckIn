@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventDao.cs" />
     <Compile Include="ProfileDao.cs" />
     <Compile Include="Sha256Adapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

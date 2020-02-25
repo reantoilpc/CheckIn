@@ -1,5 +1,6 @@
 ﻿using System;
 using CheckIn.Adapter;
+using CheckIn.Common;
 
 namespace CheckIn.Service
 {
@@ -19,6 +20,13 @@ namespace CheckIn.Service
             _profileDao = profileDao;
             _sha256Adapter = sha256Adapter;
             _authService = authService;
+        }
+
+        public GetAccessTokenResponse Login(string userName, string password)
+        {
+            var token = GetAccessToken(userName, password);
+
+            return new GetAccessTokenResponse(token);
         }
 
         public string GetAccessToken(string userName, string password)

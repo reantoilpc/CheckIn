@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventCheckInRequest.cs" />
+    <Compile Include="EventCheckInResponse.cs" />
     <Compile Include="ExceptionResponse.cs" />
     <Compile Include="GetAccessTokenRequest.cs" />
     <Compile Include="GetAccessTokenResponse.cs" />
