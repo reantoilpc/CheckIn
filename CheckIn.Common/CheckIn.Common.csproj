@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="ExceptionResponse.cs" />
     <Compile Include="GetQrCodeRequest.cs" />
     <Compile Include="GetQrCodeResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

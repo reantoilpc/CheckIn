@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 
 namespace CheckIn.Api
 {
@@ -10,7 +10,7 @@ namespace CheckIn.Api
         public static void Register(HttpConfiguration config)
         {
             // Web API 設定和服務
-
+            GlobalConfiguration.Configuration.Services.Replace(typeof(IExceptionHandler), new ApiExceptionHandler());
             // Web API 路由
             config.MapHttpAttributeRoutes();
 
