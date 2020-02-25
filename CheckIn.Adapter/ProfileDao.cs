@@ -1,11 +1,13 @@
 ﻿using System;
+using CheckIn.Class;
 
 namespace CheckIn.Adapter
 {
     public interface IProfileDao
     {
         string GetHashPassword(string userName);
-        bool UserExist(string userName);
+        Profile GetProfile(string userName);
+        void UpdateAccessToken(string userName, string accessToken);
     }
 
 
@@ -16,7 +18,12 @@ namespace CheckIn.Adapter
             throw new NotImplementedException();
         }
 
-        public bool UserExist(string userName)
+        public Profile GetProfile(string userName)
+        {
+            return new Profile();
+        }
+
+        public void UpdateAccessToken(string userName, string accessToken)
         {
             throw new NotImplementedException();
         }

@@ -2,6 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using CheckIn.Adapter;
+using CheckIn.Class;
 
 namespace CheckIn.Service
 {
@@ -13,7 +14,8 @@ namespace CheckIn.Service
 
     public class AuthService : IAuthService
     {
-        private IProfileDao _profileDao;
+        private readonly IProfileDao _profileDao;
+        public Profile Profile { get; private set; }
 
         public AuthService(IProfileDao profileDao)
         {
@@ -38,7 +40,8 @@ namespace CheckIn.Service
                 return false;
             }
 
-            return _profileDao.UserExist(values[1]);
+            Profile = _profileDao.GetProfile(values[1]);
+            return Profile.Exist;
         }
     }
 }

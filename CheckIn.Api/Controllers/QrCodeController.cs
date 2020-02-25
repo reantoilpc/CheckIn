@@ -14,8 +14,8 @@ namespace CheckIn.Api.Controllers
         [HttpPost]
         public GetQrCodeResponse GetQrCode([FromBody] GetQrCodeRequest request)
         {
-            var getQrCodeResponse = new QrCodeService().GetMemberQrCode(request.EventId);
-            return getQrCodeResponse;
+            var qrCode = new QrCodeService().GetEventQrCode(Profile, request.EventId);
+            return new GetQrCodeResponse(qrCode);
         }
     }
 }

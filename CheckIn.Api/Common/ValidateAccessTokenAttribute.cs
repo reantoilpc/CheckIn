@@ -20,14 +20,14 @@ namespace CheckIn.Api.Common
                     var accessToken = headers.Single().Value.FirstOrDefault();
 
                     var profileDao = new ProfileDao();
-                    var sha256Adapter = new Sha256Adapter();
                     var authService = new AuthService(profileDao);
 
-                    var authenticationService = new AuthenticationService(profileDao, sha256Adapter, authService);
-                    if (!authenticationService.ValidateAccessToken(accessToken))
+                    if (!authService.Verfy(accessToken))
                     {
                         throw new OperationFailedException("無效的Token");
                     }
+
+                    baseApiController.Profile = authService.Profile;
                 }
                 else
                 {

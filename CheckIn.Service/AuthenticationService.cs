@@ -5,7 +5,7 @@ namespace CheckIn.Service
 {
     public interface IAuthenticationService
     {
-        bool ValidateAccessToken(string accessToken);
+        string GetAccessToken(string userName, string password);
     }
 
     public class AuthenticationService : IAuthenticationService
@@ -21,11 +21,6 @@ namespace CheckIn.Service
             _authService = authService;
         }
 
-        public bool ValidateAccessToken(string accessToken)
-        {
-            return _authService.Verfy(accessToken);
-        }
-
         public string GetAccessToken(string userName, string password)
         {
             var hashPassword = _profileDao.GetHashPassword(userName);
@@ -33,11 +28,13 @@ namespace CheckIn.Service
 
             if (hash == hashPassword)
             {
-                return _authService.GetAccessToken(userName);
+                var accessToken = _authService.GetAccessToken(userName);
+                _profileDao.UpdateAccessToken(userName, accessToken);
+
+                return accessToken;
             }
 
             return string.Empty;
         }
-
     }
 }

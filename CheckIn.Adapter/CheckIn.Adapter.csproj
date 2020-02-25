@@ -41,10 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="ProfileDao.cs" />
     <Compile Include="Sha256Adapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CheckIn.Class\CheckIn.Class.csproj">
+      <Project>{C0B3FB68-7933-4C6E-BEFE-019EB5D0E01D}</Project>
+      <Name>CheckIn.Class</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
