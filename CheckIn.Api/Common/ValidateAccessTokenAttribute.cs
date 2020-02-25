@@ -1,10 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
+using CheckIn.Api.Controllers;
 using CheckIn.Service;
 
-namespace CheckIn.Api.Controllers
+namespace CheckIn.Api.Common
 {
     public class ValidateAccessTokenAttribute : ActionFilterAttribute
     {
@@ -33,15 +33,5 @@ namespace CheckIn.Api.Controllers
             base.OnActionExecuting(actionContext);
         }
 
-    }
-
-    public class OperationFailedException : Exception
-    {
-        public OperationFailedException(string message): base(message)
-        {
-            ErrorMessage = message;
-        }
-
-        public string ErrorMessage { get; set; }
     }
 }

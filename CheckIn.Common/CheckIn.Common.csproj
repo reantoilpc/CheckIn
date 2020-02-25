@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="ExceptionResponse.cs" />
+    <Compile Include="GetAccessTokenRequest.cs" />
+    <Compile Include="GetAccessTokenResponse.cs" />
     <Compile Include="GetQrCodeRequest.cs" />
     <Compile Include="GetQrCodeResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

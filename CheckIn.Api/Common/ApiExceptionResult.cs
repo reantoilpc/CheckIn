@@ -3,10 +3,9 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
-using CheckIn.Api.Controllers;
 using CheckIn.Common;
 
-namespace CheckIn.Api
+namespace CheckIn.Api.Common
 {
     public class ApiExceptionResult : IHttpActionResult
     {

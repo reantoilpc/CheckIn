@@ -84,12 +84,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApiExceptionHandler.cs" />
-    <Compile Include="ApiExceptionResult.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\ApiExceptionHandler.cs" />
+    <Compile Include="Common\ApiExceptionResult.cs" />
+    <Compile Include="Common\OperationFailedException.cs" />
+    <Compile Include="Common\ValidateAccessTokenAttribute.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\QrCodeController.cs" />
-    <Compile Include="Controllers\ValidateAccessTokenAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

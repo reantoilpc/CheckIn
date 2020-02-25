@@ -1,6 +1,6 @@
 ﻿using System.Web.Http.ExceptionHandling;
 
-namespace CheckIn.Api
+namespace CheckIn.Api.Common
 {
     public class ApiExceptionHandler : ExceptionHandler
     {

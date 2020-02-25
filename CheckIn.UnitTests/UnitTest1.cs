@@ -1,14 +1,20 @@
 ﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web.Configuration;
+using CheckIn.Service;
+using NUnit.Framework;
 
 namespace CheckIn.UnitTests
 {
-    [TestClass]
-    public class UnitTest1
+    [TestFixture]
+    public class AuthenticationServiceUnitTest
     {
-        [TestMethod]
-        public void TestMethod1()
+        [Test]
+        public void Is_Empty_AccessToken()
         {
+            var authenticationService = new AuthenticationService();
+            var accessToken = authenticationService.GetAccessToken("Ray", "Mypassword");
+
+            Assert.AreEqual("", accessToken);
         }
     }
 }
