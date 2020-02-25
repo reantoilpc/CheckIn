@@ -85,7 +85,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Controllers\QrCodeController.cs" />
+    <Compile Include="Controllers\ValidateAccessTokenAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -105,13 +107,13 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ChcekIn.Service\ChcekIn.Service.csproj">
-      <Project>{5FF7FA03-1D6A-452E-9445-86C6FC8C73BE}</Project>
-      <Name>ChcekIn.Service</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CheckIn.Common\CheckIn.Common.csproj">
       <Project>{1F5DB454-F35D-4BB7-9420-E8019EBFF33C}</Project>
       <Name>CheckIn.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CheckIn.Service\CheckIn.Service.csproj">
+      <Project>{895e3594-56c4-4f63-a027-9692978c25bf}</Project>
+      <Name>CheckIn.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

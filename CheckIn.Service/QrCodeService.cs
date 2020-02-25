@@ -1,7 +1,7 @@
 ﻿using System;
 using CheckIn.Common;
 
-namespace CheckIn.Api.Controllers
+namespace CheckIn.Service
 {
     public class QrCodeService 
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ChcekIn.Service
+namespace CheckIn.Service
 {
     public class Class1
     {
