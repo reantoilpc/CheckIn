@@ -2,7 +2,9 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using CheckIn.Class;
+using Dapper;
 
 namespace CheckIn.Adapter
 {
@@ -42,31 +44,41 @@ namespace CheckIn.Adapter
 
         public Profile GetProfile(string userName)
         {
-            using (var connection = new SqlConnection(ConnectionString))
+            using (var conn = new SqlConnection(ConnectionString))
             {
-                var sqlCommand = new SqlCommand()
-                {
-                    Connection = connection,
-                    CommandType = CommandType.StoredProcedure,
-                    CommandText = "Get_Profile"
-                };
+                conn.Open();
 
-                sqlCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = userName;
-                connection.Open();
-                var reader = sqlCommand.ExecuteReader();
+                var strSql = "select * from Profile where UserName = @UserName ";
 
-                if (reader.Read())
-                {
-                    return new Profile()
-                    {
-                        AccountId = Convert.ToInt32(reader["Id"]),
-                        UserName = reader["UserName"].ToString(),
-                        AccessToken = reader["AccessToken"].ToString(),
-                    };
-                }
+                var result = conn.QueryFirstOrDefault<Profile>(strSql, new {userName});
 
-                return new Profile();
+                return result;
             }
+            //using (var connection = new SqlConnection(ConnectionString))
+            //{
+            //    var sqlCommand = new SqlCommand()
+            //    {
+            //        Connection = connection,
+            //        CommandType = CommandType.StoredProcedure,
+            //        CommandText = "Get_Profile"
+            //    };
+
+            //    sqlCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = userName;
+            //    connection.Open();
+            //    var reader = sqlCommand.ExecuteReader();
+
+            //    if (reader.Read())
+            //    {
+            //        return new Profile()
+            //        {
+            //            AccountId = Convert.ToInt32(reader["Id"]),
+            //            UserName = reader["UserName"].ToString(),
+            //            AccessToken = reader["AccessToken"].ToString(),
+            //        };
+            //    }
+
+            //    return new Profile();
+            //}
         }
 
         public void UpdateAccessToken(string userName, string accessToken)
