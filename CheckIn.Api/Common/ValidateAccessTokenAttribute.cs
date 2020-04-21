@@ -23,10 +23,7 @@ namespace CheckIn.Api.Common
                     var profileDao = new ProfileDao();
                     var authService = new AuthService(profileDao);
 
-                    if (!authService.Verify(accessToken))
-                    {
-                        throw new OperationFailedException("無效的Token");
-                    }
+                    if (!authService.Verify(accessToken)) throw new OperationFailedException("無效的Token");
 
                     baseApiController.Profile = authService.Profile;
                 }

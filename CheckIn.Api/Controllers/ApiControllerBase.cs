@@ -6,7 +6,5 @@ namespace CheckIn.Api.Controllers
     public class ApiControllerBase : ApiController
     {
         public Profile Profile { get; set; }
-
-
     }
 }

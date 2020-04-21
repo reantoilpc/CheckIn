@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,27 +12,23 @@ namespace CheckIn.Api.Common
     {
         public ApiExceptionResult(HttpRequestMessage request, Exception exception)
         {
-            this.Request = request;
-            this.Exception = exception;
+            Request = request;
+            Exception = exception;
         }
+
+        public HttpRequestMessage Request { get; set; }
+        public Exception Exception { set; get; }
 
 
         public Task<HttpResponseMessage> ExecuteAsync(CancellationToken cancellationToken)
         {
             ExceptionResponse response;
             if (Exception is OperationFailedException thisException)
-            {
                 response = new ExceptionResponse(thisException.ErrorMessage);
-            }
             else
-            {
                 response = new ExceptionResponse("系統發生錯誤!!");
-            }
 
-            return Task.FromResult(this.Request.CreateResponse(System.Net.HttpStatusCode.OK, response));
+            return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK, response));
         }
-
-        public HttpRequestMessage Request { get;  set; }
-        public Exception Exception { set;  get; }
     }
 }

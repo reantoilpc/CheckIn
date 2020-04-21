@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using CheckIn.Adapter;
 using CheckIn.Api.Common;
 using CheckIn.Common;
@@ -29,9 +26,9 @@ namespace CheckIn.Api.Controllers
 
         [HttpPut]
         [ValidateAccessToken]
-        public EventCheckInResponse EventCheckIn([FromBody]EventCheckInRequest request)
+        public EventCheckInResponse EventCheckIn([FromBody] EventCheckInRequest request)
         {
-             var result = qrCodeService.CheckIn(Profile, request.EventID);
+            var result = qrCodeService.CheckIn(Profile, request.EventID);
             return new EventCheckInResponse(result);
         }
 
@@ -43,6 +40,5 @@ namespace CheckIn.Api.Controllers
 
             return new CancelCheckInResponse(result);
         }
-
     }
 }
