@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace CheckIn.Adapter
@@ -6,8 +7,8 @@ namespace CheckIn.Adapter
     public interface IEventDao
     {
         string GetQrCode(int eventId, int accountId);
-        bool CheckIn(int eventId, int accountId);
-        bool Cancel(int eventId, int accountId);
+        bool UpdateQrCodeStatus(int eventId, int accountId, bool isCheckIn);
+        bool DeleteQrCode(int eventId, int accountId);
     }
 
     public class EventDao : ConnectionBase, IEventDao
@@ -37,7 +38,7 @@ namespace CheckIn.Adapter
             }
         }
 
-        public bool CheckIn(int eventId, int accountId)
+        public bool UpdateQrCodeStatus(int eventId, int accountId, bool isCheckIn)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
@@ -50,7 +51,7 @@ namespace CheckIn.Adapter
 
                 sqlCommand.Parameters.Add("@EventId", SqlDbType.Int).Value = eventId;
                 sqlCommand.Parameters.Add("@AccountId", SqlDbType.Int).Value = accountId;
-                sqlCommand.Parameters.Add("@CheckInStatus", SqlDbType.SmallInt).Value = 1;
+                sqlCommand.Parameters.Add("@CheckInStatus", SqlDbType.SmallInt).Value = Convert.ToInt32(isCheckIn);
                 connection.Open();
                 var reader = sqlCommand.ExecuteReader();
 
@@ -58,7 +59,7 @@ namespace CheckIn.Adapter
             }
         }
 
-        public bool Cancel(int eventId, int accountId)
+        public bool DeleteQrCode(int eventId, int accountId)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {

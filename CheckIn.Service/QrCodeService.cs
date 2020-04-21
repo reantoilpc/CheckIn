@@ -21,13 +21,13 @@ namespace CheckIn.Service
 
         public bool CheckIn(Profile profile, int eventId)
         {
-            return _eventDao.CheckIn(eventId, profile.AccountID);
+            return _eventDao.UpdateQrCodeStatus(eventId, profile.AccountID, true);
             
         }
 
         public bool Cancel(Profile profile, int eventId)
         {
-            return _eventDao.Cancel(eventId, profile.AccountID);
+            return _eventDao.DeleteQrCode(eventId, profile.AccountID);
         }
     }
 }

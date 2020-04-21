@@ -54,31 +54,6 @@ namespace CheckIn.Adapter
 
                 return result;
             }
-            //using (var connection = new SqlConnection(ConnectionString))
-            //{
-            //    var sqlCommand = new SqlCommand()
-            //    {
-            //        Connection = connection,
-            //        CommandType = CommandType.StoredProcedure,
-            //        CommandText = "Get_Profile"
-            //    };
-
-            //    sqlCommand.Parameters.Add("@UserName", SqlDbType.VarChar).Value = userName;
-            //    connection.Open();
-            //    var reader = sqlCommand.ExecuteReader();
-
-            //    if (reader.Read())
-            //    {
-            //        return new Profile()
-            //        {
-            //            AccountId = Convert.ToInt32(reader["Id"]),
-            //            UserName = reader["UserName"].ToString(),
-            //            AccessToken = reader["AccessToken"].ToString(),
-            //        };
-            //    }
-
-            //    return new Profile();
-            //}
         }
 
         public void UpdateAccessToken(string userName, string accessToken)
