@@ -9,7 +9,7 @@ namespace CheckIn.Service
     public interface IAuthService
     {
         string GetAccessToken(string userName);
-        bool Verfy(string accessToken);
+        bool Verify(string accessToken);
     }
 
     public class AuthService : IAuthService
@@ -29,7 +29,7 @@ namespace CheckIn.Service
             return Convert.ToBase64String(bytes);
         }
 
-        public bool Verfy(string accessToken)
+        public bool Verify(string accessToken)
         {
             var bytes = Convert.FromBase64String(accessToken);
             var tokenValue = Encoding.UTF8.GetString(bytes);
