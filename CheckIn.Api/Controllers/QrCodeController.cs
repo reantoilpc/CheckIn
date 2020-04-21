@@ -9,7 +9,7 @@ using CheckIn.Service;
 
 namespace CheckIn.Api.Controllers
 {
-    public class QrCodeController : BaseApiController
+    public class QrCodeController : ApiControllerBase
     {
         private readonly QrCodeService _qrCodeService;
 

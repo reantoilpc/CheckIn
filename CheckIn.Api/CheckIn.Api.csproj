@@ -93,7 +93,7 @@
     <Compile Include="Common\ApiExceptionResult.cs" />
     <Compile Include="Common\ValidateAccessTokenAttribute.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\ApiControllerBase.cs" />
     <Compile Include="Controllers\QrCodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

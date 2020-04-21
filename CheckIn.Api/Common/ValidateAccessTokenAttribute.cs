@@ -12,7 +12,7 @@ namespace CheckIn.Api.Common
     {
         public override void OnActionExecuting(HttpActionContext actionContext)
         {
-            if (actionContext.ControllerContext.Controller is BaseApiController baseApiController)
+            if (actionContext.ControllerContext.Controller is ApiControllerBase baseApiController)
             {
                 var headers = baseApiController.Request.Headers.Where(h => h.Key.Equals("AccessToken")).ToList();
 

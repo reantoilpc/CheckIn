@@ -10,7 +10,7 @@ using CheckIn.Service;
 
 namespace CheckIn.Api.Controllers
 {
-    public class AccountController : BaseApiController
+    public class AccountController : ApiControllerBase
     {
         private readonly AuthenticationService _authenticationService;
 

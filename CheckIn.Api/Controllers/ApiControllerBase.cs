@@ -3,7 +3,7 @@ using CheckIn.Class;
 
 namespace CheckIn.Api.Controllers
 {
-    public class BaseApiController : ApiController
+    public class ApiControllerBase : ApiController
     {
         public Profile Profile { get; set; }
 
