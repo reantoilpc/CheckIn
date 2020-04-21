@@ -23,7 +23,7 @@ namespace CheckIn.Api.Controllers
         }
 
         [HttpPost]
-        public GetAccessTokenResponse GetAccesstoken([FromBody] GetAccessTokenRequest request)
+        public GetAccessTokenResponse GetAccessToken([FromBody] GetAccessTokenRequest request)
         {
             var accessToken = _authenticationService.GetAccessToken(request.UserName, request.Password);
 
