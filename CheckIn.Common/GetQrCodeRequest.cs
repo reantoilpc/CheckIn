@@ -5,6 +5,6 @@
         /// <summary>
         /// 活動Id
         /// </summary>
-        public int EventId { get; set; }
+        public int EventID { get; set; }
     }
 }

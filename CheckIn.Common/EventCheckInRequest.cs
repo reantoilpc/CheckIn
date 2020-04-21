@@ -2,6 +2,6 @@
 {
     public class EventCheckInRequest
     {
-        public int EventId { get; set; }
+        public int EventID { get; set; }
     }
 }

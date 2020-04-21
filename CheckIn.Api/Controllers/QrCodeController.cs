@@ -23,7 +23,7 @@ namespace CheckIn.Api.Controllers
         [ValidateAccessToken]
         public GetQrCodeResponse GetQrCode([FromBody] GetQrCodeRequest request)
         {
-            var qrCode = _qrCodeService.GetEventQrCode(Profile, request.EventId);
+            var qrCode = _qrCodeService.GetEventQrCode(Profile, request.EventID);
             return new GetQrCodeResponse(qrCode);
         }
 
@@ -31,7 +31,7 @@ namespace CheckIn.Api.Controllers
         [ValidateAccessToken]
         public EventCheckInResponse EventCheckIn([FromBody]EventCheckInRequest request)
         {
-             var result = _qrCodeService.CheckIn(Profile, request.EventId);
+             var result = _qrCodeService.CheckIn(Profile, request.EventID);
             return new EventCheckInResponse(result);
         }
 
@@ -39,7 +39,7 @@ namespace CheckIn.Api.Controllers
         [ValidateAccessToken]
         public CancelCheckInResponse CancelCheckIn([FromBody] CancelCheckInRequest request)
         {
-            var result = _qrCodeService.Cancel(Profile, request.EventId);
+            var result = _qrCodeService.Cancel(Profile, request.EventID);
 
             return new CancelCheckInResponse(result);
         }
