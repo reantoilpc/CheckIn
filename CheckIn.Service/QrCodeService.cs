@@ -7,27 +7,27 @@ namespace CheckIn.Service
 {
     public class QrCodeService
     {
-        private readonly IEventDao eventDao;
+        private readonly IEventDao _eventDao;
 
         public QrCodeService(IEventDao eventDao)
         {
-            this.eventDao = eventDao;
+            this._eventDao = eventDao;
         }
         public string GetEventQrCode(Profile profile, int eventId)
         {
-            var qrCode = eventDao.GetQrCode(eventId, profile.AccountID);
+            var qrCode = _eventDao.GetQrCode(eventId, profile.AccountID);
             return qrCode;
         }
 
         public bool CheckIn(Profile profile, int eventId)
         {
-            return eventDao.UpdateQrCodeStatus(eventId, profile.AccountID, true);
+            return _eventDao.UpdateQrCodeStatus(eventId, profile.AccountID, true);
             
         }
 
         public bool Cancel(Profile profile, int eventId)
         {
-            return eventDao.DeleteQrCode(eventId, profile.AccountID);
+            return _eventDao.DeleteQrCode(eventId, profile.AccountID);
         }
     }
 }

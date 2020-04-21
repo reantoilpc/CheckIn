@@ -11,27 +11,27 @@ namespace CheckIn.Service
 
     public class AuthenticationService : IAuthenticationService
     {
-        private readonly IProfileDao profileDao;
-        private readonly IHash sha256Adapter;
-        private readonly IAuthService authService;
+        private readonly IProfileDao _profileDao;
+        private readonly IHash _sha256Adapter;
+        private readonly IAuthService _authService;
 
         public AuthenticationService(IProfileDao profileDao, IHash sha256Adapter, IAuthService authService)
         {
-            this.profileDao = profileDao;
-            this.sha256Adapter = sha256Adapter;
-            this.authService = authService;
+            this._profileDao = profileDao;
+            this._sha256Adapter = sha256Adapter;
+            this._authService = authService;
         }
 
 
         public string GetAccessToken(string userName, string password)
         {
-            var hashPassword = profileDao.GetHashPassword(userName);
-            var hash = sha256Adapter.ComputeHash(password);
+            var hashPassword = _profileDao.GetHashPassword(userName);
+            var hash = _sha256Adapter.ComputeHash(password);
 
             if (hash == hashPassword)
             {
-                var accessToken = authService.GetAccessToken(userName);
-                profileDao.UpdateAccessToken(userName, accessToken);
+                var accessToken = _authService.GetAccessToken(userName);
+                _profileDao.UpdateAccessToken(userName, accessToken);
 
                 return accessToken;
             }
