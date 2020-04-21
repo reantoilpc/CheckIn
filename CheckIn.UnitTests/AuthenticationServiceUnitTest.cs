@@ -10,19 +10,19 @@ namespace CheckIn.UnitTests
     [TestFixture]
     public class AuthenticationServiceUnitTest
     {
-        private AuthenticationService _authenticationService;
-        private IProfileDao _profileDao;
-        private string _accessToken;
-        private IHash _sha256Adapter;
-        private IAuthService _authService;
+        private AuthenticationService authenticationService;
+        private IProfileDao profileDao;
+        private string accessToken;
+        private IHash sha256Adapter;
+        private IAuthService authService;
 
         [SetUp]
         public void SetUp()
         {
-            _profileDao = Substitute.For<IProfileDao>();
-            _sha256Adapter = Substitute.For<IHash>();
-            _authService = Substitute.For<IAuthService>();
-            _authenticationService = new AuthenticationService(_profileDao, _sha256Adapter, _authService);
+            profileDao = Substitute.For<IProfileDao>();
+            sha256Adapter = Substitute.For<IHash>();
+            authService = Substitute.For<IAuthService>();
+            authenticationService = new AuthenticationService(profileDao, sha256Adapter, authService);
         }
 
         [Test]
@@ -44,29 +44,29 @@ namespace CheckIn.UnitTests
 
         private void ShouldThrow<TException>() where TException : Exception
         {
-            TestDelegate action = () => _authenticationService.GetAccessToken("Ray", "Mypassword");
+            TestDelegate action = () => authenticationService.GetAccessToken("Ray", "Mypassword");
             Assert.Throws<TException>(action);
         }
 
         private void GivenAccessToken(string accessToken)
         {
-            _authService.GetAccessToken(Arg.Any<string>()).Returns(accessToken);
+            authService.GetAccessToken(Arg.Any<string>()).Returns(accessToken);
         }
 
         private void GivenComputeHash(string hashPassword)
         {
-            _sha256Adapter.ComputeHash(Arg.Any<string>()).Returns(hashPassword);
+            sha256Adapter.ComputeHash(Arg.Any<string>()).Returns(hashPassword);
         }
 
         private void GivenHashPassword(string userName, string hashPassword)
         {
-            _profileDao.GetHashPassword(userName).Returns(hashPassword);
+            profileDao.GetHashPassword(userName).Returns(hashPassword);
         }
 
         private void AccessTokenShouldBe(string expected)
         {
-            _accessToken = _authenticationService.GetAccessToken("Ray", "Mypassword");
-            Assert.AreEqual(expected, _accessToken);
+            accessToken = authenticationService.GetAccessToken("Ray", "Mypassword");
+            Assert.AreEqual(expected, accessToken);
         }
     }
 }

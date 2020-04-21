@@ -14,12 +14,12 @@ namespace CheckIn.Service
 
     public class AuthService : IAuthService
     {
-        private readonly IProfileDao _profileDao;
+        private readonly IProfileDao profileDao;
         public Profile Profile { get; private set; }
 
         public AuthService(IProfileDao profileDao)
         {
-            _profileDao = profileDao;
+            this.profileDao = profileDao;
         }
 
         public string GetAccessToken(string userName)
@@ -40,7 +40,7 @@ namespace CheckIn.Service
                 return false;
             }
 
-            Profile = _profileDao.GetProfile(values[1]);
+            Profile = profileDao.GetProfile(values[1]);
             return Profile.Exist;
         }
     }
