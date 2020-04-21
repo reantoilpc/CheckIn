@@ -29,12 +29,9 @@ namespace CheckIn.Adapter
                 connection.Open();
                 var reader = sqlCommand.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    return reader["QrCode"].ToString();
-                }
-
-                return string.Empty;
+                return reader.Read() 
+                    ? reader["QrCode"].ToString() 
+                    : string.Empty;
             }
         }
 

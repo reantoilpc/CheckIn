@@ -33,12 +33,9 @@ namespace CheckIn.Adapter
                 connection.Open();
                 var reader = sqlCommand.ExecuteReader();
 
-                if (reader.Read())
-                {
-                    return reader["Password"].ToString();
-                }
-
-                return string.Empty;
+                return reader.Read() 
+                    ? reader["Password"].ToString() 
+                    : string.Empty;
             }
         }
 
