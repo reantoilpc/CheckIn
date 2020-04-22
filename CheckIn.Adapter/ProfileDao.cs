@@ -8,16 +8,41 @@ using Dapper;
 
 namespace CheckIn.Adapter
 {
+    /// <summary>
+    /// 使用者資料的資料庫介面
+    /// </summary>
     public interface IProfileDao
     {
+        /// <summary>
+        /// 取得加密過的密碼
+        /// </summary>
+        /// <param name="userName">使用者帳號</param>
+        /// <returns>加密過的密碼</returns>
         string GetHashPassword(string userName);
+        /// <summary>
+        /// 取得個人資料
+        /// </summary>
+        /// <param name="userName">使用者帳號</param>
+        /// <returns>個人的資料</returns>
         Profile GetProfile(string userName);
+        /// <summary>
+        /// 更新使用者的AccessToken
+        /// </summary>
+        /// <param name="userName">使用者帳號</param>
+        /// <param name="accessToken">AccessToken</param>
         void UpdateAccessToken(string userName, string accessToken);
     }
 
-
+    /// <summary>
+    /// 使用者資料的資料庫元件
+    /// </summary>
     public class ProfileDao : ConnectionBase, IProfileDao
     {
+        /// <summary>
+        /// 取得加密過的密碼
+        /// </summary>
+        /// <param name="userName">使用者帳號</param>
+        /// <returns>加密過的密碼</returns> 
         public string GetHashPassword(string userName)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -38,7 +63,11 @@ namespace CheckIn.Adapter
                     : string.Empty;
             }
         }
-
+        /// <summary>
+        /// 取得個人資料
+        /// </summary>
+        /// <param name="userName">使用者帳號</param>
+        /// <returns>個人的資料</returns>
         public Profile GetProfile(string userName)
         {
             using (var conn = new SqlConnection(ConnectionString))
@@ -52,7 +81,11 @@ namespace CheckIn.Adapter
                 return result;
             }
         }
-
+        /// <summary>
+        /// 更新使用者的AccessToken
+        /// </summary>
+        /// <param name="userName">使用者帳號</param>
+        /// <param name="accessToken">AccessToken</param>
         public void UpdateAccessToken(string userName, string accessToken)
         {
             using (var connection = new SqlConnection(ConnectionString))

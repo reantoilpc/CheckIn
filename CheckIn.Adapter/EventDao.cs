@@ -4,15 +4,46 @@ using System.Data.SqlClient;
 
 namespace CheckIn.Adapter
 {
+    /// <summary>
+    /// 活動的資料庫介面
+    /// </summary>
     public interface IEventDao
     {
+        /// <summary>
+        /// 取得QrCode
+        /// </summary>
+        /// <param name="eventId">活動Id</param>
+        /// <param name="accountId">帳號Id</param>
+        /// <returns>QrCode字串</returns>
         string GetQrCode(int eventId, int accountId);
+        /// <summary>
+        /// 更新QrCode的狀態
+        /// </summary>
+        /// <param name="eventId">活動Id</param>
+        /// <param name="accountId">帳號Id</param>
+        /// <param name="isCheckIn">是否己經報到</param>
+        /// <returns>更新成功或失敗</returns>
         bool UpdateQrCodeStatus(int eventId, int accountId, bool isCheckIn);
+        /// <summary>
+        /// 刪除QrCode
+        /// </summary>
+        /// <param name="eventId">活動Id</param>
+        /// <param name="accountId">帳號Id</param>
+        /// <returns>刪除成功或失敗</returns>
         bool DeleteQrCode(int eventId, int accountId);
     }
-
+    
+    /// <summary>
+    /// 活動的資料庫元件
+    /// </summary>
     public class EventDao : ConnectionBase, IEventDao
     {
+        /// <summary>
+        /// 取得QrCode
+        /// </summary>
+        /// <param name="eventId">活動Id</param>
+        /// <param name="accountId">帳號Id</param>
+        /// <returns>QrCode字串</returns>
         public string GetQrCode(int eventId, int accountId)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -34,7 +65,13 @@ namespace CheckIn.Adapter
                     : string.Empty;
             }
         }
-
+        /// <summary>
+        /// 更新QrCode的狀態
+        /// </summary>
+        /// <param name="eventId">活動Id</param>
+        /// <param name="accountId">帳號Id</param>
+        /// <param name="isCheckIn">是否己經報到</param>
+        /// <returns>更新成功或失敗</returns>
         public bool UpdateQrCodeStatus(int eventId, int accountId, bool isCheckIn)
         {
             using (var connection = new SqlConnection(ConnectionString))
@@ -55,7 +92,12 @@ namespace CheckIn.Adapter
                 return reader.RecordsAffected > 0;
             }
         }
-
+        /// <summary>
+        /// 刪除QrCode
+        /// </summary>
+        /// <param name="eventId">活動Id</param>
+        /// <param name="accountId">帳號Id</param>
+        /// <returns>刪除成功或失敗</returns>
         public bool DeleteQrCode(int eventId, int accountId)
         {
             using (var connection = new SqlConnection(ConnectionString))

@@ -7,6 +7,9 @@ namespace CheckIn.Api.Controllers
 {
     public class AccountController : ApiControllerBase
     {
+        /// <summary>
+        /// 認證元件
+        /// </summary>
         private readonly AuthenticationService _authenticationService;
 
         public AccountController()
@@ -17,6 +20,11 @@ namespace CheckIn.Api.Controllers
             _authenticationService = new AuthenticationService(profileDao, sha256Adapter, authService);
         }
 
+        /// <summary>
+        /// 取得AccessToken
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPost]
         public GetAccessTokenResponse GetAccessToken([FromBody] GetAccessTokenRequest request)
         {

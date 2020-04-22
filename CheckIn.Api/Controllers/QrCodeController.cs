@@ -8,6 +8,9 @@ namespace CheckIn.Api.Controllers
 {
     public class QrCodeController : ApiControllerBase
     {
+        /// <summary>
+        /// QrCode 服務
+        /// </summary>
         private readonly QrCodeService _qrCodeService;
 
         public QrCodeController()
@@ -16,6 +19,11 @@ namespace CheckIn.Api.Controllers
             _qrCodeService = new QrCodeService(eventDao);
         }
 
+        /// <summary>
+        /// 取得QrCode
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpGet]
         [ValidateAccessToken]
         public GetQrCodeResponse GetQrCode([FromBody] GetQrCodeRequest request)
@@ -24,6 +32,11 @@ namespace CheckIn.Api.Controllers
             return new GetQrCodeResponse(qrCode);
         }
 
+        /// <summary>
+        /// 活動報到
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpPut]
         [ValidateAccessToken]
         public EventCheckInResponse EventCheckIn([FromBody] EventCheckInRequest request)
@@ -32,6 +45,11 @@ namespace CheckIn.Api.Controllers
             return new EventCheckInResponse(result);
         }
 
+        /// <summary>
+        /// 取消報到
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         [HttpDelete]
         [ValidateAccessToken]
         public CancelCheckInResponse CancelCheckIn([FromBody] CancelCheckInRequest request)

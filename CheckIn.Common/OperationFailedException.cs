@@ -9,6 +9,9 @@ namespace CheckIn.Common
             ErrorMessage = message;
         }
 
+        /// <summary>
+        /// 錯誤訊息
+        /// </summary>
         public string ErrorMessage { get; set; }
     }
 }
