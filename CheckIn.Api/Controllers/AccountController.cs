@@ -5,10 +5,13 @@ using CheckIn.Service;
 
 namespace CheckIn.Api.Controllers
 {
+    /// <summary>
+    /// 帳號類別
+    /// </summary>
     public class AccountController : ApiControllerBase
     {
         /// <summary>
-        ///     認證元件
+        ///     身份驗證元件
         /// </summary>
         private readonly AuthenticationService _authenticationService;
 

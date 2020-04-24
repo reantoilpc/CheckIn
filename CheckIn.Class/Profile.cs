@@ -24,7 +24,5 @@
         ///     使用者AccessToken
         /// </summary>
         public string AccessToken { get; set; }
-
-        public string SN { get; set; }
     }
 }

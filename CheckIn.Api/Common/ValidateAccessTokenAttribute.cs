@@ -8,6 +8,9 @@ using CheckIn.Service;
 
 namespace CheckIn.Api.Common
 {
+    /// <summary>
+    /// 驗證 AccessToken 是否合法
+    /// </summary>
     public class ValidateAccessTokenAttribute : ActionFilterAttribute
     {
         public override void OnActionExecuting(HttpActionContext actionContext)

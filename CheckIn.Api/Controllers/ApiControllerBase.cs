@@ -3,6 +3,9 @@ using CheckIn.Class;
 
 namespace CheckIn.Api.Controllers
 {
+    /// <summary>
+    /// API 基底類別
+    /// </summary>
     public class ApiControllerBase : ApiController
     {
         /// <summary>

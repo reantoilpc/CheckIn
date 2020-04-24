@@ -6,6 +6,9 @@ using CheckIn.Service;
 
 namespace CheckIn.Api.Controllers
 {
+    /// <summary>
+    /// QrCode 類別
+    /// </summary>
     public class QrCodeController : ApiControllerBase
     {
         /// <summary>

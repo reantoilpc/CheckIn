@@ -8,6 +8,9 @@ using CheckIn.Common;
 
 namespace CheckIn.Api.Common
 {
+    /// <summary>
+    /// 定義 Exception 格式類別
+    /// </summary>
     public class ApiExceptionResult : IHttpActionResult
     {
         public ApiExceptionResult(HttpRequestMessage request, Exception exception)
@@ -24,10 +27,15 @@ namespace CheckIn.Api.Common
         {
             ExceptionResponse response;
             if (Exception is OperationFailedException thisException)
+            {
+                
                 response = new ExceptionResponse(thisException.ErrorMessage);
+            }
             else
+            {
                 response = new ExceptionResponse("系統發生錯誤!!");
-
+            }
+            
             return Task.FromResult(Request.CreateResponse(HttpStatusCode.OK, response));
         }
     }
