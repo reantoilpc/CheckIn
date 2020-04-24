@@ -4,7 +4,7 @@
     {
         public GetAccessTokenResponse(string token)
         {
-            this.ResultData = token;
+            ResultData = token;
         }
     }
 }

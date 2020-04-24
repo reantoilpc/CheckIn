@@ -1,32 +1,31 @@
-﻿using System;
-using System.Configuration;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
 using CheckIn.Class;
 using Dapper;
 
 namespace CheckIn.Adapter
 {
     /// <summary>
-    /// 使用者資料的資料庫介面
+    ///     使用者資料的資料庫介面
     /// </summary>
     public interface IProfileDao
     {
         /// <summary>
-        /// 取得加密過的密碼
+        ///     取得加密過的密碼
         /// </summary>
         /// <param name="userName">使用者帳號</param>
         /// <returns>加密過的密碼</returns>
         string GetHashPassword(string userName);
+
         /// <summary>
-        /// 取得個人資料
+        ///     取得個人資料
         /// </summary>
         /// <param name="userName">使用者帳號</param>
         /// <returns>個人的資料</returns>
         Profile GetProfile(string userName);
+
         /// <summary>
-        /// 更新使用者的AccessToken
+        ///     更新使用者的AccessToken
         /// </summary>
         /// <param name="userName">使用者帳號</param>
         /// <param name="accessToken">AccessToken</param>
@@ -34,20 +33,20 @@ namespace CheckIn.Adapter
     }
 
     /// <summary>
-    /// 使用者資料的資料庫元件
+    ///     使用者資料的資料庫元件
     /// </summary>
     public class ProfileDao : ConnectionBase, IProfileDao
     {
         /// <summary>
-        /// 取得加密過的密碼
+        ///     取得加密過的密碼
         /// </summary>
         /// <param name="userName">使用者帳號</param>
-        /// <returns>加密過的密碼</returns> 
+        /// <returns>加密過的密碼</returns>
         public string GetHashPassword(string userName)
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var sqlCommand = new SqlCommand()
+                var sqlCommand = new SqlCommand
                 {
                     Connection = connection,
                     CommandType = CommandType.StoredProcedure,
@@ -58,13 +57,14 @@ namespace CheckIn.Adapter
                 connection.Open();
                 var reader = sqlCommand.ExecuteReader();
 
-                return reader.Read() 
-                    ? reader["Password"].ToString() 
+                return reader.Read()
+                    ? reader["Password"].ToString()
                     : string.Empty;
             }
         }
+
         /// <summary>
-        /// 取得個人資料
+        ///     取得個人資料
         /// </summary>
         /// <param name="userName">使用者帳號</param>
         /// <returns>個人的資料</returns>
@@ -81,8 +81,9 @@ namespace CheckIn.Adapter
                 return result;
             }
         }
+
         /// <summary>
-        /// 更新使用者的AccessToken
+        ///     更新使用者的AccessToken
         /// </summary>
         /// <param name="userName">使用者帳號</param>
         /// <param name="accessToken">AccessToken</param>
@@ -90,7 +91,7 @@ namespace CheckIn.Adapter
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var sqlCommand = new SqlCommand()
+                var sqlCommand = new SqlCommand
                 {
                     Connection = connection,
                     CommandType = CommandType.StoredProcedure,

@@ -5,41 +5,43 @@ using System.Data.SqlClient;
 namespace CheckIn.Adapter
 {
     /// <summary>
-    /// 活動的資料庫介面
+    ///     活動的資料庫介面
     /// </summary>
     public interface IEventDao
     {
         /// <summary>
-        /// 取得QrCode
+        ///     取得QrCode
         /// </summary>
         /// <param name="eventId">活動Id</param>
         /// <param name="accountId">帳號Id</param>
         /// <returns>QrCode字串</returns>
         string GetQrCode(int eventId, int accountId);
+
         /// <summary>
-        /// 更新QrCode的狀態
+        ///     更新QrCode的狀態
         /// </summary>
         /// <param name="eventId">活動Id</param>
         /// <param name="accountId">帳號Id</param>
         /// <param name="isCheckIn">是否己經報到</param>
         /// <returns>更新成功或失敗</returns>
         bool UpdateQrCodeStatus(int eventId, int accountId, bool isCheckIn);
+
         /// <summary>
-        /// 刪除QrCode
+        ///     刪除QrCode
         /// </summary>
         /// <param name="eventId">活動Id</param>
         /// <param name="accountId">帳號Id</param>
         /// <returns>刪除成功或失敗</returns>
         bool DeleteQrCode(int eventId, int accountId);
     }
-    
+
     /// <summary>
-    /// 活動的資料庫元件
+    ///     活動的資料庫元件
     /// </summary>
     public class EventDao : ConnectionBase, IEventDao
     {
         /// <summary>
-        /// 取得QrCode
+        ///     取得QrCode
         /// </summary>
         /// <param name="eventId">活動Id</param>
         /// <param name="accountId">帳號Id</param>
@@ -48,7 +50,7 @@ namespace CheckIn.Adapter
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var sqlCommand = new SqlCommand()
+                var sqlCommand = new SqlCommand
                 {
                     Connection = connection,
                     CommandType = CommandType.StoredProcedure,
@@ -60,13 +62,14 @@ namespace CheckIn.Adapter
                 connection.Open();
                 var reader = sqlCommand.ExecuteReader();
 
-                return reader.Read() 
-                    ? reader["QrCode"].ToString() 
+                return reader.Read()
+                    ? reader["QrCode"].ToString()
                     : string.Empty;
             }
         }
+
         /// <summary>
-        /// 更新QrCode的狀態
+        ///     更新QrCode的狀態
         /// </summary>
         /// <param name="eventId">活動Id</param>
         /// <param name="accountId">帳號Id</param>
@@ -76,7 +79,7 @@ namespace CheckIn.Adapter
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var sqlCommand = new SqlCommand()
+                var sqlCommand = new SqlCommand
                 {
                     Connection = connection,
                     CommandType = CommandType.StoredProcedure,
@@ -92,8 +95,9 @@ namespace CheckIn.Adapter
                 return reader.RecordsAffected > 0;
             }
         }
+
         /// <summary>
-        /// 刪除QrCode
+        ///     刪除QrCode
         /// </summary>
         /// <param name="eventId">活動Id</param>
         /// <param name="accountId">帳號Id</param>
@@ -102,7 +106,7 @@ namespace CheckIn.Adapter
         {
             using (var connection = new SqlConnection(ConnectionString))
             {
-                var sqlCommand = new SqlCommand()
+                var sqlCommand = new SqlCommand
                 {
                     Connection = connection,
                     CommandType = CommandType.StoredProcedure,

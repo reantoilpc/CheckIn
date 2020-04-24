@@ -9,7 +9,7 @@ namespace CheckIn.Api.Controllers
     public class QrCodeController : ApiControllerBase
     {
         /// <summary>
-        /// QrCode 服務
+        ///     QrCode 服務
         /// </summary>
         private readonly QrCodeService _qrCodeService;
 
@@ -20,7 +20,7 @@ namespace CheckIn.Api.Controllers
         }
 
         /// <summary>
-        /// 取得QrCode
+        ///     取得QrCode
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -33,7 +33,7 @@ namespace CheckIn.Api.Controllers
         }
 
         /// <summary>
-        /// 活動報到
+        ///     活動報到
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>
@@ -46,7 +46,7 @@ namespace CheckIn.Api.Controllers
         }
 
         /// <summary>
-        /// 取消報到
+        ///     取消報到
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>

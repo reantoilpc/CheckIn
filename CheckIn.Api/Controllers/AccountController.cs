@@ -8,7 +8,7 @@ namespace CheckIn.Api.Controllers
     public class AccountController : ApiControllerBase
     {
         /// <summary>
-        /// 認證元件
+        ///     認證元件
         /// </summary>
         private readonly AuthenticationService _authenticationService;
 
@@ -21,7 +21,7 @@ namespace CheckIn.Api.Controllers
         }
 
         /// <summary>
-        /// 取得AccessToken
+        ///     取得AccessToken
         /// </summary>
         /// <param name="request"></param>
         /// <returns></returns>

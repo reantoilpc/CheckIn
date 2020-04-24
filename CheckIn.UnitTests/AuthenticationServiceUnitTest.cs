@@ -10,12 +10,6 @@ namespace CheckIn.UnitTests
     [TestFixture]
     public class AuthenticationServiceUnitTest
     {
-        private AuthenticationService _authenticationService;
-        private IProfileDao _profileDao;
-        private string _accessToken;
-        private IHash _sha256Adapter;
-        private IAuthService _authService;
-
         [SetUp]
         public void SetUp()
         {
@@ -25,22 +19,11 @@ namespace CheckIn.UnitTests
             _authenticationService = new AuthenticationService(_profileDao, _sha256Adapter, _authService);
         }
 
-        [Test]
-        public void InValid_Should_Throw_Exception()
-        {
-            GivenHashPassword("Ray", "HashPassword");
-
-            ShouldThrow<OperationFailedException>();
-        }
-
-        [Test]
-        public void Is_Valid_Should_GetAccessToken()
-        {
-            GivenHashPassword("Ray", "HashPassword");
-            GivenComputeHash("HashPassword");
-            GivenAccessToken("AccessToken");
-            AccessTokenShouldBe("AccessToken");
-        }
+        private AuthenticationService _authenticationService;
+        private IProfileDao _profileDao;
+        private string _accessToken;
+        private IHash _sha256Adapter;
+        private IAuthService _authService;
 
         private void ShouldThrow<TException>() where TException : Exception
         {
@@ -67,6 +50,23 @@ namespace CheckIn.UnitTests
         {
             _accessToken = _authenticationService.GetAccessToken("Ray", "Mypassword");
             Assert.AreEqual(expected, _accessToken);
+        }
+
+        [Test]
+        public void InValid_Should_Throw_Exception()
+        {
+            GivenHashPassword("Ray", "HashPassword");
+
+            ShouldThrow<OperationFailedException>();
+        }
+
+        [Test]
+        public void Is_Valid_Should_GetAccessToken()
+        {
+            GivenHashPassword("Ray", "HashPassword");
+            GivenComputeHash("HashPassword");
+            GivenAccessToken("AccessToken");
+            AccessTokenShouldBe("AccessToken");
         }
     }
 }

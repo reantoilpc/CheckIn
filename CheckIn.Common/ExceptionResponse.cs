@@ -4,8 +4,7 @@
     {
         public ExceptionResponse(string errorMessage)
         {
-            this.ResultMessage = errorMessage;
+            ResultMessage = errorMessage;
         }
-        
     }
 }

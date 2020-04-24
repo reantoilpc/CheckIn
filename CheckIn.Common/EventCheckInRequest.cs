@@ -3,7 +3,7 @@
     public class EventCheckInRequest
     {
         /// <summary>
-        /// 活動ID
+        ///     活動ID
         /// </summary>
         public int EventID { get; set; }
     }

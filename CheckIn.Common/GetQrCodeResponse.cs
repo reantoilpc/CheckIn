@@ -4,7 +4,7 @@
     {
         public GetQrCodeResponse(string qrCode)
         {
-            this.ResultData= qrCode;
+            ResultData = qrCode;
         }
     }
 }

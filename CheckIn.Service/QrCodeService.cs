@@ -1,27 +1,25 @@
-﻿using System;
-using CheckIn.Adapter;
+﻿using CheckIn.Adapter;
 using CheckIn.Class;
-using CheckIn.Common;
 
 namespace CheckIn.Service
 {
-    
     /// <summary>
-    /// QrCode服務元件
+    ///     QrCode服務元件
     /// </summary>
     public class QrCodeService
     {
         /// <summary>
-        /// 活動的資料庫元件
+        ///     活動的資料庫元件
         /// </summary>
         private readonly IEventDao _eventDao;
 
         public QrCodeService(IEventDao eventDao)
         {
-            this._eventDao = eventDao;
+            _eventDao = eventDao;
         }
+
         /// <summary>
-        /// 取得活動QrCode
+        ///     取得活動QrCode
         /// </summary>
         /// <param name="profile">使用者資料</param>
         /// <param name="eventId">活動ID</param>
@@ -33,7 +31,7 @@ namespace CheckIn.Service
         }
 
         /// <summary>
-        /// 活動報到
+        ///     活動報到
         /// </summary>
         /// <param name="profile">使用者資料</param>
         /// <param name="eventId">活動ID</param>
@@ -41,11 +39,10 @@ namespace CheckIn.Service
         public bool CheckIn(Profile profile, int eventId)
         {
             return _eventDao.UpdateQrCodeStatus(eventId, profile.AccountID, true);
-            
         }
 
         /// <summary>
-        /// 取消報到
+        ///     取消報到
         /// </summary>
         /// <param name="profile">使用者資料</param>
         /// <param name="eventId">活動ID</param>

@@ -3,7 +3,7 @@
     public class GetQrCodeRequest
     {
         /// <summary>
-        /// 活動Id
+        ///     活動Id
         /// </summary>
         public int EventID { get; set; }
     }
